@@ -4,34 +4,10 @@
   </a>
   <br>
   <br>
-	<a href="https://travis-ci.org/typeorm/typeorm">
-		<img src="https://travis-ci.org/typeorm/typeorm.svg?branch=master">
-	</a>
-	<a href="https://badge.fury.io/js/typeorm">
-		<img src="https://badge.fury.io/js/typeorm.svg">
-	</a>
-	<a href="https://david-dm.org/typeorm/typeorm">
-		<img src="https://david-dm.org/typeorm/typeorm.svg">
-	</a>
-	<a href="https://david-dm.org/typeorm/typeorm#info=devDependencies">
-		<img src="https://david-dm.org/typeorm/typeorm/dev-status.svg">
-	</a>
-	<a href="https://gitter.im/typeorm/typeorm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-		<img src="https://badges.gitter.im/typeorm/typeorm.svg">
-	</a>
-  <br>
-  <br>
 </div>
 
 > Please support a project by simply putting a Github star. 
 Share this library with friends on Twitter and everywhere else you can.
-
-> ORM is in active development, but main API is pretty stable.
-If you notice bug or have something not working please report an issue, we'll try to fix it as soon as possible.
-More documentation and features expected to be soon. Feel free to contribute.
-
-> Important note: if you want latest stable version install `npm i typeorm@0.0.11`. You can find 0.0.11 version [README here](https://github.com/typeorm/typeorm/tree/0.0.x-version).
-> If you want the latest development version simply install `npm i typeorm`. For the latest development release changes see [changelog](./CHANGELOG.md).
 
 TypeORM is an [Object Relational Mapper](1) (ORM) for Node.js written in
 TypeScript that can be used with TypeScript or JavaScript (ES5, ES6, ES7).
@@ -1024,75 +1000,3 @@ await photoRepository.save(photo2);
 console.log("Both photos have been saved");
 ```
 
-### Using QueryBuilder
-
-You can use QueryBuilder to build even more complex queries. For example, you can do this:
-
-```typescript
-let photoRepository = connection.getRepository(Photo);
-let photos = await photoRepository
-    .createQueryBuilder("photo") // first argument is an alias. Alias is what you are selecting - photos. You must specify it.
-    .innerJoinAndSelect("photo.metadata", "metadata")
-    .leftJoinAndSelect("photo.albums", "albums")
-    .where("photo.isPublished=true")
-    .andWhere("(photo.name=:photoName OR photo.name=:bearName)")
-    .orderBy("photo.id", "DESC")
-    .skip(5)
-    .take(10)
-    .setParameters({ photoName: "My", bearName: "Mishka" })
-    .getMany();
-```
-
-This query builder will select all photos that are published and whose name is "My" or "Mishka".
-It will select results from position 5 (pagination offset), 
-and will select only 10 results (pagination limit). 
-The selection result will be ordered by id in descending order. 
-The photos' albums will be left-joined and their metadata will be inner joined.
-
-You'll use the query builder in your application a lot. Learn more about QueryBuilder [here](https://typeorm.github.io/query-builder.html).
-
-## Learn more
-
-* [Connection and connection options](https://typeorm.github.io/connection.html)
-* [Connection Manager](https://typeorm.github.io/connection-manager.html)
-* [Databases and drivers](https://typeorm.github.io/databases-and-drivers.html)
-* [Updating database schema](https://typeorm.github.io/updating-database-schema.html)
-* [Tables and columns](https://typeorm.github.io/tables-and-columns.html)
-* [Relations](https://typeorm.github.io/relations.html)
-* [Indices](https://typeorm.github.io/indices.html)
-* [Repository](https://typeorm.github.io/repository.html)
-* [Query Builder](https://typeorm.github.io/query-builder.html)
-* [Entity Manager](https://typeorm.github.io/entity-manager.html)
-* [Subscribers and entity listeners](https://typeorm.github.io/subscribers-and-entity-listeners.html)
-* [Migrations](https://typeorm.github.io/migrations.html)
-* [Using service container](https://typeorm.github.io/using-service-container.html)
-* [Decorators Reference](https://typeorm.github.io/decorators-reference.html)
-* [Usage in the browser](https://typeorm.github.io/usage-in-browser.html)
-* [Using with JavaScript](https://typeorm.github.io/usage-with-javascript.html)
-
-## Samples
-
-Take a look at the samples in [./sample](sample) for examples of usage.
-
-There are a few repositories which you can clone and start with:
-
-* [Example how to use TypeORM with TypeScript](https://github.com/typeorm/typescript-example)
-* [Example how to use TypeORM with JavaScript](https://github.com/typeorm/javascript-example)
-* [Example how to use TypeORM with JavaScript and Babel](https://github.com/typeorm/babel-example)
-* [Example how to use TypeORM with TypeScript and SystemJS in Browser](https://github.com/typeorm/browser-example)
-* [Example how to use Express and TypeORM with TypeScript](https://github.com/typeorm/typescript-express-example)
-* [Example how to use Koa and TypeORM with TypeScript](https://github.com/typeorm/typescript-koa-example)
-
-## Extensions
-
-There are several extensions that simplify TypeORM integration with other modules:
-
-* [TypeORM integration](https://github.com/typeorm/typeorm-typedi-extensions) with [TypeDI](https://github.com/pleerock/typedi)
-* [TypeORM integration](https://github.com/typeorm/typeorm-routing-controllers-extensions) with [routing-controllers](https://github.com/pleerock/routing-controllers)
-
-## Contributing 
-
-Learn about contribution [here](CONTRIBUTING.md) and how to setup your development environment [here](DEVELOPER.md).
-
-
-[1]: https://en.wikipedia.org/wiki/Object-relational_mapping
