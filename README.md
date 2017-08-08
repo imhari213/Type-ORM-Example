@@ -1000,30 +1000,3 @@ await photoRepository.save(photo2);
 console.log("Both photos have been saved");
 ```
 
-### Using QueryBuilder
-
-You can use QueryBuilder to build even more complex queries. For example, you can do this:
-
-```typescript
-let photoRepository = connection.getRepository(Photo);
-let photos = await photoRepository
-    .createQueryBuilder("photo") // first argument is an alias. Alias is what you are selecting - photos. You must specify it.
-    .innerJoinAndSelect("photo.metadata", "metadata")
-    .leftJoinAndSelect("photo.albums", "albums")
-    .where("photo.isPublished=true")
-    .andWhere("(photo.name=:photoName OR photo.name=:bearName)")
-    .orderBy("photo.id", "DESC")
-    .skip(5)
-    .take(10)
-    .setParameters({ photoName: "My", bearName: "Mishka" })
-    .getMany();
-```
-
-This query builder will select all photos that are published and whose name is "My" or "Mishka".
-It will select results from position 5 (pagination offset), 
-and will select only 10 results (pagination limit). 
-The selection result will be ordered by id in descending order. 
-The photos' albums will be left-joined and their metadata will be inner joined.
-
-You'll use the query builder in your application a lot. Learn more about QueryBuilder [here](https://typeorm.github.io/query-builder.html).
-
