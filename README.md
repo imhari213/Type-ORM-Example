@@ -4,34 +4,10 @@
   </a>
   <br>
   <br>
-	<a href="https://travis-ci.org/typeorm/typeorm">
-		<img src="https://travis-ci.org/typeorm/typeorm.svg?branch=master">
-	</a>
-	<a href="https://badge.fury.io/js/typeorm">
-		<img src="https://badge.fury.io/js/typeorm.svg">
-	</a>
-	<a href="https://david-dm.org/typeorm/typeorm">
-		<img src="https://david-dm.org/typeorm/typeorm.svg">
-	</a>
-	<a href="https://david-dm.org/typeorm/typeorm#info=devDependencies">
-		<img src="https://david-dm.org/typeorm/typeorm/dev-status.svg">
-	</a>
-	<a href="https://gitter.im/typeorm/typeorm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge">
-		<img src="https://badges.gitter.im/typeorm/typeorm.svg">
-	</a>
-  <br>
-  <br>
 </div>
 
 > Please support a project by simply putting a Github star. 
 Share this library with friends on Twitter and everywhere else you can.
-
-> ORM is in active development, but main API is pretty stable.
-If you notice bug or have something not working please report an issue, we'll try to fix it as soon as possible.
-More documentation and features expected to be soon. Feel free to contribute.
-
-> Important note: if you want latest stable version install `npm i typeorm@0.0.11`. You can find 0.0.11 version [README here](https://github.com/typeorm/typeorm/tree/0.0.x-version).
-> If you want the latest development version simply install `npm i typeorm`. For the latest development release changes see [changelog](./CHANGELOG.md).
 
 TypeORM is an [Object Relational Mapper](1) (ORM) for Node.js written in
 TypeScript that can be used with TypeScript or JavaScript (ES5, ES6, ES7).
