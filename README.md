@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://typeorm.github.io/">
-    <img src="./resources/logo_big.jpg" width="492" height="228">
+    <img src="./resources/logo_big.png" width="492" height="228">
   </a>
   <br>
   <br>
